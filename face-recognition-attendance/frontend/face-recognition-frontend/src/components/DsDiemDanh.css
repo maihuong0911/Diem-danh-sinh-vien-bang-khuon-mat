@@ -1,0 +1,12 @@
+.date-input {
+    padding: 10px;
+    margin: 10px 0; /* Khoảng cách giữa ô nhập liệu và bảng */
+    border: 1px solid #ccc; /* Đường viền mỏng */
+    border-radius: 5px; /* Bo tròn góc */
+    font-size: 16px; /* Kích thước chữ */
+    width: 100%; /* Chiếm toàn bộ bề rộng */
+    max-width: 250px; /* Giới hạn chiều rộng tối đa */
+    margin-right: 5px; /* Khoảng cách giữa ô nhập liệu và các thành phần khác */
+}
+
+/* Có thể thêm nhiều quy tắc CSS khác ở đây cho bảng và các phần tử khác nếu cần */

@@ -1,0 +1,54 @@
+/* StudentList.css */
+
+h2 {
+    font-size: 24px; /* Kích thước chữ tiêu đề */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+button {
+    padding: 10px 15px; /* Padding cho nút */
+    background-color: #007bff; /* Màu nền nút */
+    color: white; /* Màu chữ nút */
+    border: none; /* Không có đường viền */
+    border-radius: 5px; /* Bo tròn góc */
+    cursor: pointer; /* Con trỏ khi hover */
+    margin-bottom: 15px; /* Khoảng cách dưới nút */
+}
+
+button:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+select, 
+input[type="text"], 
+input[type="date"] {
+    padding: 10px; /* Padding cho các ô nhập liệu */
+    margin-right: 10px; /* Khoảng cách bên phải */
+    border: 1px solid #ccc; /* Đường viền */
+    border-radius: 5px; /* Bo tròn góc */
+    font-size: 16px; /* Kích thước chữ */
+}
+
+table {
+    width: 100%; /* Chiếm toàn bộ bề rộng */
+    border-collapse: collapse; /* Gộp các đường viền */
+    margin-top: 20px; /* Khoảng cách trên bảng */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Đường viền cho ô */
+    padding: 8px; /* Padding cho ô */
+    text-align: left; /* Căn trái nội dung ô */
+}
+
+th {
+    background-color: #f2f2f2; /* Màu nền cho tiêu đề bảng */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Màu nền cho hàng chẵn */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Màu nền khi hover hàng */
+}

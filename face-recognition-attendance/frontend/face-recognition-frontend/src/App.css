@@ -1,0 +1,438 @@
+:root {
+  --primary-color: #007bff;
+  --primary-color-dark: #0056b3;
+  --success-color: #28a745;
+  --success-color-dark: #218838;
+  --background-color: #f4f4f4;
+  --white-color: #ffffff;
+  --dark-gray: #333333;
+  --light-gray: #f9f9f9;
+}
+
+/* Định dạng toàn bộ trang */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tiêu đề chính */
+h1 {
+  color: var(--dark-gray);
+  margin-top: 20px;
+}
+
+/* Container chính */
+.camera-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px;
+}
+
+/* 🎥 Định dạng camera */
+.camera-container {
+  width: 100%;
+  max-width: 650px;
+  aspect-ratio: 16 / 9; /* Tỷ lệ khung hình */
+  border-radius: 15px; /* Bo góc */
+  overflow: hidden; /* Ẩn phần thừa */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Hiển thị video từ webcam */
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Giữ nguyên tỷ lệ hình ảnh */
+  border-radius: 15px; /* Bo góc camera */
+}
+
+/* Nút điều khiển chung */
+button {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 12px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng bóng đổ */
+}
+
+button:hover,
+button:focus {
+  background-color: var(--primary-color-dark);
+  transform: scale(1.05);
+}
+
+/* 🎯 Nút điểm danh */
+.attendance-btn {
+  background-color: #dc3545; /* Màu đỏ cho nút Chụp & Điểm danh */
+  color: var(--white-color);
+  padding: 14px 30px;
+  font-size: 18px;
+  transition: all 0.3s ease; /* Thêm hiệu ứng cho chuyển động */
+}
+
+/* Hiệu ứng hover cho nút Chụp & Điểm danh */
+.attendance-btn:hover {
+  background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+  transform: scale(1.05); /* Uốn cong một chút khi hover */
+}
+
+/* 📋 Bảng điểm danh */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: var(--light-gray);
+}
+
+/* 📢 Modal thông báo */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--white-color);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.3); /* Tăng độ đậm của bóng đổ */
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: var(--dark-gray); /* Thay đổi màu chữ */
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 5px; /* Căn giữa để các nút không bị dồn về một bên */
+}
+
+.modal-content button:first-of-type {
+  background-color: var(--success-color);
+  color: var(--white-color);
+}
+
+.modal-content button:first-of-type:hover {
+  background-color: var(--success-color-dark);
+}
+
+.modal-content button:last-of-type {
+  background-color: #dc3545; /* Đỏ cho nút hủy */
+  color: var(--white-color);
+}
+
+.modal-content button:last-of-type:hover {
+  background-color: #c82333; /* Đỏ đậm hơn khi hover */
+}
+
+/* Bổ sung cho hiệu ứng hover */
+button:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Tăng cường bóng đổ khi hover */
+  transform: translateY(-2px); /* Nâng nút lên khi hover */
+}
+/* 📌 Danh sách điểm danh */
+.attendance-list {
+  width: 90%; /* Đặt độ rộng thành 90% để tự động điều chỉnh theo độ rộng của màn hình */
+  max-width: 800px; /* Có thể đặt max-width để tránh bị rộng quá */
+  margin: 20px auto; /* Tìm giữa trang */
+  padding: 15px; /* Thêm padding cho không gian bên trong */
+  border-radius: 10px;
+  background-color: var(--light-gray);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ẩn phần thừa nếu cần */
+  
+}
+/* 🎯 Nút điểm danh */
+.attendance-btn {
+  background-color: #dc3545; /* Màu đỏ cho nút Chụp & Điểm danh */
+  color: var(--white-color);
+  padding: 14px 30px;
+  font-size: 18px;
+  transition: all 0.3s ease; /* Thêm hiệu ứng cho chuyển động */
+}
+
+/* Hiệu ứng hover cho nút Chụp & Điểm danh */
+.attendance-btn:hover {
+  background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+  transform: scale(1.05); /* Uốn cong một chút khi hover */
+}
+
+/* Nút điều khiển chung */
+button {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 12px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng bóng đổ */
+}
+
+/* Hiệu ứng hover cho nút chung */
+button:hover,
+button:focus {
+  background-color: var(--primary-color-dark);
+  transform: scale(1.05);
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ để tạo không gian sống động */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Đảm bảo modal nằm trên cùng */
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px; /* Chiều rộng cố định cho modal */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+    position: relative; /* Để sử dụng cho các phần tử bên trong */
+    animation: fadeIn 0.3s ease; /* Hiệu ứng tạo sự mềm mại khi mở modal */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Khoảng cách giữa các trường */
+}
+  
+label {
+    margin-bottom: 5px;
+    color: #333; /* Màu chữ cho nhãn */
+    font-weight: bold; /* Chữ đậm cho nhãn */
+    display: block; /* Hiển thị nhãn như block để thêm khoảng cách */
+}
+
+input {
+    width: 100%; /* Chiều rộng tối đa cho ô nhập */
+    padding: 10px;
+    border: 1px solid #ccc; /* Biên sáng cho ô nhập */
+    border-radius: 5px; /* Bo tròn các góc */
+    font-size: 14px; /* Kích thước chữ trong ô nhập */
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between; /* Chia đều không gian giữa hai nút */
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Màu nền cho nút chính */
+    color: white; /* Màu chữ cho nút chính */
+}
+
+.btn-secondary {
+    background-color: #ccc; /* Màu nền cho nút huỷ */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Màu nền khi di chuột qua nút chính */
+}
+
+.btn-secondary:hover {
+    background-color: #bbb; /* Màu nền khi di chuột qua nút huỷ */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Nền mờ để tạo không gian sống động */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Đảm bảo modal nằm trên cùng */
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 500px; /* Chiều rộng đã tăng lên cho modal */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+  position: relative; /* Để sử dụng cho các phần tử bên trong */
+  animation: fadeIn 0.3s ease; /* Hiệu ứng tạo sự mềm mại khi mở modal */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Khoảng cách giữa các trường */
+}
+
+label {
+  margin-bottom: 5px;
+  color: #333; /* Màu chữ cho nhãn */
+  font-weight: bold; /* Chữ đậm cho nhãn */
+  display: block; /* Hiển thị nhãn như block để thêm khoảng cách */
+  text-align: left; /* Căn trái cho nhãn */
+}
+
+input {
+  width: 100%; /* Chiều rộng tối đa cho ô nhập */
+  padding: 10px;
+  border: 1px solid #ccc; /* Biên sáng cho ô nhập */
+  border-radius: 5px; /* Bo tròn các góc */
+  font-size: 14px; /* Kích thước chữ trong ô nhập */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between; /* Chia đều không gian giữa hai nút */
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Màu nền cho nút chính */
+  color: white; /* Màu chữ cho nút chính */
+}
+
+.btn-secondary {
+  background-color: #ccc; /* Màu nền cho nút huỷ */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Màu nền khi di chuột qua nút chính */
+}
+
+.btn-secondary:hover {
+  background-color: #bbb; /* Màu nền khi di chuột qua nút huỷ */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+/* Đặt các thuộc tính cho nút chung */
+.toggle-btn, .attendance-btn {
+  background-color: #dc3545; /* Màu đỏ */
+  color: var(--white-color);
+  padding: 13px 0px; /* Bằng nhau cho cả hai nút */
+  font-size: 18px;
+  border: none; 
+  border-radius: 5px; /* Bo tròn các góc */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%; /* Đặt chiều rộng bằng 100% để chúng dài bằng nhau */
+}
+
+/* Hiệu ứng hover cho cả hai nút */
+.toggle-btn:hover, .attendance-btn:hover {
+  background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+  transform: scale(1.05); /* Tăng kích thước một chút khi hover */
+}
+
+.auto-attendance-message {
+  position: fixed;
+  top: 20px; /* Vị trí thông báo ở trên cùng */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000000; /* Màu nền đỏ cho thông báo */
+  color: white;
+  padding: 10px 20px; /* Padding cho thông báo */
+  border-radius: 5px; /* Bo tròn các góc */
+  animation: slideDown 0.5s ease-out; /* Hiệu ứng trôi xuống khi hiện */
+}
+
+@keyframes slideDown {
+  0% {
+      transform: translateY(-20px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
