@@ -280,7 +280,7 @@ Với hướng dẫn này, bạn có thể sử dụng và cấu hình hệ th�
 
 ## 📰 Poster
 <p align="center">
-  <img src="images/Nhóm-7-Poster.png" alt="System Architecture" width="800"/>
+  <img src="images/Nhom-7-Poster.png" alt="System Architecture" width="800"/>
 </p>
 
 ## 🤝 Đóng góp
